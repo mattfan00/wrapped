@@ -33,13 +33,13 @@ export default {
       setTimeout(() => {
         this.$emit("next-section")
         console.log("emit")
-      }, 1500)
+      }, 1000)
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .section-1 {
   position: absolute;
@@ -47,45 +47,6 @@ export default {
   width: 100vw;
   color: white;
   z-index: 10;
-}
-
-@keyframes fade-in-out {
-  0% {
-    opacity: 0;
-    transform: translate(0, 30px);
-  }
-  25% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-  75% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(0, 30px);
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translate(0, 30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 .fade-out {
@@ -101,16 +62,6 @@ export default {
 
   .highlight {
     color: #f5ad06;
-  }
-
-  .big {
-    font-size: 4em;
-    font-weight: bold;
-  }
-
-  .small {
-    margin-top: 30px;
-    font-size: 1em;
   }
 
   .first {

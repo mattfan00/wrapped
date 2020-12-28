@@ -5,6 +5,7 @@
 
     <Intro @next-section="nextSection" v-if="section == 1" />
     <Timeline @next-section="nextSection" v-else-if="section == 2" />
+    <Food @next-section="nextSection" v-else-if="section == 3" />
 
   </div>
 </template>
@@ -12,12 +13,14 @@
 <script>
 import Intro from "./components/Intro"
 import Timeline from "./components/Timeline"
+import Food from "./components/Food"
 
 export default {
   name: 'App',
   components: {
     Intro,
     Timeline,
+    Food,
   },
 
   data() {
@@ -34,7 +37,7 @@ export default {
         if (this.section == 2) {
           this.$refs.main.classList.replace("bg-black", "bg-orange")
         } else if (this.section == 3) {
-          this.$refs.main.classList.replace("bg-orange", "bg-green")
+          this.$refs.main.classList.replace("bg-orange", "bg-blue")
         }
       }, 2000)
     }
@@ -56,12 +59,32 @@ body {
   width: 100vw;
 }
 
+.big {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.medium {
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+.small {
+  margin-top: 30px;
+  font-size: 1em;
+}
+
+
 .bg-black {
   background-color: black;
 }
 
 .bg-orange {
-  background-color: orange;
+  background-color: #f5ad06;
+}
+
+.bg-blue {
+  background-color: #3b01e2;
 }
 
 .arrows {
@@ -90,7 +113,7 @@ body {
   bottom: 0;
   height: 0;
   width: 100%;
-  background-color: orange;
+  background-color: #f5ad06;
   animation: section-2-transition 2s;
   // animation-fill-mode: forwards;
   z-index: 0;
@@ -101,7 +124,7 @@ body {
   bottom: 0;
   height: 0;
   width: 100%;
-  background-color: green;
+  background-color: #3b01e2;
   animation: section-3-transition 2s;
   // animation-fill-mode: forwards;
   z-index: 0;
@@ -125,4 +148,61 @@ body {
   }
 }
 
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translate(0, 30px);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 30px);
+  }
+}
+
+@keyframes fade-in-out-long {
+  0% {
+    opacity: 0;
+    transform: translate(0, 30px);
+  }
+  16.66666666667% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  83.33333333334% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 30px);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translate(0, 30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 </style>
