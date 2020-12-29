@@ -1,11 +1,13 @@
 <template>
   <div ref="main" class="main bg-black">
-    <div v-if="section == 2" class="section-2-transition"></div>
-    <div v-if="section == 3" class="section-3-transition"></div>
+    <div v-if="section == 2" class="transition section-2-transition"></div>
+    <div v-if="section == 3" class="transition section-3-transition"></div>
+    <div v-if="section == 4" class="transition section-4-transition"></div>
 
     <Intro @next-section="nextSection" v-if="section == 1" />
     <Timeline @next-section="nextSection" v-else-if="section == 2" />
     <Food @next-section="nextSection" v-else-if="section == 3" />
+    <Movies @next-section="nextSection" v-else-if="section == 4" />
 
   </div>
 </template>
@@ -14,6 +16,7 @@
 import Intro from "./components/Intro"
 import Timeline from "./components/Timeline"
 import Food from "./components/Food"
+import Movies from "./components/Movies"
 
 export default {
   name: 'App',
@@ -21,6 +24,7 @@ export default {
     Intro,
     Timeline,
     Food,
+    Movies,
   },
 
   data() {
@@ -38,6 +42,8 @@ export default {
           this.$refs.main.classList.replace("bg-black", "bg-orange")
         } else if (this.section == 3) {
           this.$refs.main.classList.replace("bg-orange", "bg-blue")
+        } else if (this.section == 4) {
+          this.$refs.main.classList.replace("bg-blue", "bg-yellow")
         }
       }, 2000)
     }
@@ -87,6 +93,10 @@ body {
   background-color: #3b01e2;
 }
 
+.bg-yellow {
+  background-color: #cdf564;
+}
+
 .arrows {
   position: absolute;
   bottom: 25px;
@@ -108,26 +118,30 @@ body {
 
 }
 
-.section-2-transition {
+.transition {
   position: absolute;
   bottom: 0;
   height: 0;
   width: 100%;
-  background-color: #f5ad06;
-  animation: section-2-transition 2s;
-  // animation-fill-mode: forwards;
   z-index: 0;
 }
 
+.section-2-transition {
+  background-color: #f5ad06;
+  animation: section-2-transition 2s;
+  // animation-fill-mode: forwards;
+}
+
 .section-3-transition {
-  position: absolute;
-  bottom: 0;
-  height: 0;
-  width: 100%;
   background-color: #3b01e2;
   animation: section-3-transition 2s;
   // animation-fill-mode: forwards;
-  z-index: 0;
+}
+
+.section-4-transition {
+  background-color: #cdf564;
+  animation: section-4-transition 2s;
+  // animation-fill-mode: forwards;
 }
 
 @keyframes section-2-transition {
@@ -140,6 +154,15 @@ body {
 }
 
 @keyframes section-3-transition {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100vh;
+  }
+}
+
+@keyframes section-4-transition {
   0% {
     height: 0;
   }
@@ -172,11 +195,11 @@ body {
     opacity: 0;
     transform: translate(0, 30px);
   }
-  16.66666666667% {
+  12.5% {
     opacity: 1;
     transform: translate(0, 0);
   }
-  83.33333333334% {
+  87.5% {
     opacity: 1;
     transform: translate(0, 0);
   }

@@ -62,6 +62,11 @@ export default {
   z-index: 10;
 }
 
+.fade-out {
+  animation: fade-out 1s;
+  animation-fill-mode: forwards;
+}
+
 .center {
   position: absolute;
   top: 50%;
@@ -69,7 +74,7 @@ export default {
   transform: translate(-50%, -50%);
 
   .highlight {
-    color: #fff703;
+    color: #cdf564;
   }
 
   .first {
@@ -87,7 +92,7 @@ export default {
     align-items: center;
 
     opacity: 0;
-    animation: fade-in-out-long 6s;
+    animation: fade-in-out-long 8s;
     animation-delay: 11s;
 
     img {
@@ -97,13 +102,12 @@ export default {
 
       border-radius: 12px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
     }
   }
   .fourth {
     opacity: 0;
     animation: fade-in 1s;
-    animation-delay: 17.5s;
+    animation-delay: 19.5s;
     animation-fill-mode: forwards;
   }
 }
