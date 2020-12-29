@@ -3,11 +3,15 @@
     <div v-if="section == 2" class="transition section-2-transition"></div>
     <div v-if="section == 3" class="transition section-3-transition"></div>
     <div v-if="section == 4" class="transition section-4-transition"></div>
+    <div v-if="section == 5" class="transition section-5-transition"></div>
+    <div v-if="section == 6" class="transition section-6-transition"></div>
 
     <Intro @next-section="nextSection" v-if="section == 1" />
     <Timeline @next-section="nextSection" v-else-if="section == 2" />
     <Food @next-section="nextSection" v-else-if="section == 3" />
     <Movies @next-section="nextSection" v-else-if="section == 4" />
+    <Hours @next-section="nextSection" v-else-if="section == 5" />
+    <Quiz @next-section="nextSection" v-else-if="section == 6" />
 
   </div>
 </template>
@@ -17,14 +21,19 @@ import Intro from "./components/Intro"
 import Timeline from "./components/Timeline"
 import Food from "./components/Food"
 import Movies from "./components/Movies"
+import Hours from "./components/Hours"
+import Quiz from "./components/Quiz"
 
 export default {
   name: 'App',
+
   components: {
     Intro,
     Timeline,
     Food,
     Movies,
+    Hours,
+    Quiz,
   },
 
   data() {
@@ -37,13 +46,16 @@ export default {
     nextSection() {
       this.section++
       setTimeout(() => {
-        console.log("hie")
         if (this.section == 2) {
           this.$refs.main.classList.replace("bg-black", "bg-orange")
         } else if (this.section == 3) {
           this.$refs.main.classList.replace("bg-orange", "bg-blue")
         } else if (this.section == 4) {
           this.$refs.main.classList.replace("bg-blue", "bg-yellow")
+        } else if (this.section == 5) {
+          this.$refs.main.classList.replace("bg-yellow", "bg-pink")
+        } else if (this.section == 6) {
+          this.$refs.main.classList.replace("bg-pink", "bg-light-blue")
         }
       }, 2000)
     }
@@ -97,6 +109,14 @@ body {
   background-color: #cdf564;
 }
 
+.bg-pink {
+  background-color: #cb1582;
+}
+
+.bg-light-blue {
+  background-color: #a5ffee;
+}
+
 .arrows {
   position: absolute;
   bottom: 25px;
@@ -144,6 +164,18 @@ body {
   // animation-fill-mode: forwards;
 }
 
+.section-5-transition {
+  background-color: #cb1582;
+  animation: section-5-transition 2s;
+  // animation-fill-mode: forwards;
+}
+
+.section-6-transition {
+  background-color: #a5ffee;
+  animation: section-6-transition 2s;
+  // animation-fill-mode: forwards;
+}
+
 @keyframes section-2-transition {
   0% {
     height: 0;
@@ -163,6 +195,24 @@ body {
 }
 
 @keyframes section-4-transition {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100vh;
+  }
+}
+
+@keyframes section-5-transition {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100vh;
+  }
+}
+
+@keyframes section-6-transition {
   0% {
     height: 0;
   }
@@ -200,6 +250,25 @@ body {
     transform: translate(0, 0);
   }
   87.5% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 30px);
+  }
+}
+
+@keyframes fade-in-out-xlong {
+  0% {
+    opacity: 0;
+    transform: translate(0, 30px);
+  }
+  5% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  95% {
     opacity: 1;
     transform: translate(0, 0);
   }

@@ -13,7 +13,13 @@
         <div class="big"><span class="highlight">movies</span> and <span class="highlight">shows</span></div>
       </div>
     </div>
-    <div class="ratings third">
+    <div class="center">
+      <div class="third">
+        <div class="big">Here are my</div>
+        <div class="big highlight">thoughts</div>
+      </div>
+    </div>
+    <div class="ratings fourth">
       <div class="content">
         <div class="big title">Matt's <span class="highlight">Review Corner</span></div>
         <div class="middle">
@@ -103,12 +109,17 @@ export default {
     animation: fade-in-out 4s;
     animation-delay: 6.5s;
   }
+  .third {
+    opacity: 0;
+    animation: fade-in-out 4s;
+    animation-delay: 11s;
+  }
 }
 
-.third {
+.fourth {
   opacity: 0;
   animation: fade-in 1s;
-  animation-delay: 11s;
+  animation-delay: 15.5s;
   animation-fill-mode: forwards;
 }
 
