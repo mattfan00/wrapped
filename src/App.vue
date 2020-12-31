@@ -5,6 +5,7 @@
     <div v-if="section == 4" class="transition section-4-transition"></div>
     <div v-if="section == 5" class="transition section-5-transition"></div>
     <div v-if="section == 6" class="transition section-6-transition"></div>
+    <div v-if="section == 7" class="transition section-2-transition"></div>
 
     <Intro @next-section="nextSection" v-if="section == 1" />
     <Timeline @next-section="nextSection" v-else-if="section == 2" />
@@ -12,6 +13,7 @@
     <Movies @next-section="nextSection" v-else-if="section == 4" />
     <Hours @next-section="nextSection" v-else-if="section == 5" />
     <Quiz @next-section="nextSection" v-else-if="section == 6" />
+    <Monologue @next-section="nextSection" v-else-if="section == 7" />
 
   </div>
 </template>
@@ -23,6 +25,7 @@ import Food from "./components/Food"
 import Movies from "./components/Movies"
 import Hours from "./components/Hours"
 import Quiz from "./components/Quiz"
+import Monologue from "./components/Monologue"
 
 export default {
   name: 'App',
@@ -34,6 +37,7 @@ export default {
     Movies,
     Hours,
     Quiz,
+    Monologue,
   },
 
   data() {
@@ -56,6 +60,8 @@ export default {
           this.$refs.main.classList.replace("bg-yellow", "bg-pink")
         } else if (this.section == 6) {
           this.$refs.main.classList.replace("bg-pink", "bg-light-blue")
+        } else if (this.section == 7) {
+          this.$refs.main.classList.replace("bg-light-blue", "bg-orange")
         }
       }, 2000)
     }
