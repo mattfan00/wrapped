@@ -18,7 +18,7 @@
     <div class="center">
       <div class="third">
         <div class="big highlight">1307 hours</div>
-        <div class="small">This might not be as much as other couples who have been together for 2 years, but I still feel really happy and comfortable with you and we are going to make this number much larger :)</div>
+        <div class="small">This might not be as much as other couples who have been together for 2 years, but I our time will come when we can be together all the time and we are going to make this number much larger :)</div>
         <div class="small">Maybe like one third of these hours had some snippet of me singing so I'm sorry bub.</div>
       </div>
     </div>

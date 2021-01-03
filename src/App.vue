@@ -108,11 +108,6 @@ export default {
 
 <style lang="scss">
 
-button {
-  position:absolute;
-  z-index: 100;
-}
-
 body {
   margin: 0;
   overflow: hidden;
