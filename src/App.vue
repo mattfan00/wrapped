@@ -6,6 +6,7 @@
     <div v-if="section == 5" class="transition section-5-transition"></div>
     <div v-if="section == 6" class="transition section-6-transition"></div>
     <div v-if="section == 7" class="transition section-2-transition"></div>
+    <div v-if="section == 8" class="transition section-8-transition"></div>
 
     <Intro @next-section="nextSection" v-if="section == 1" />
     <Timeline @next-section="nextSection" v-else-if="section == 2" />
@@ -14,6 +15,7 @@
     <Hours @next-section="nextSection" v-else-if="section == 5" />
     <Quiz @next-section="nextSection" v-else-if="section == 6" />
     <Monologue @next-section="nextSection" v-else-if="section == 7" />
+    <Conclusion @next-section="nextSection" v-else-if="section == 8" />
 
   </div>
 </template>
@@ -26,6 +28,9 @@ import Movies from "./components/Movies"
 import Hours from "./components/Hours"
 import Quiz from "./components/Quiz"
 import Monologue from "./components/Monologue"
+import Conclusion from "./components/Conclusion"
+
+import {Howl} from 'howler';
 
 export default {
   name: 'App',
@@ -38,6 +43,7 @@ export default {
     Hours,
     Quiz,
     Monologue,
+    Conclusion
   },
 
   data() {
@@ -48,6 +54,9 @@ export default {
 
   methods: {
     nextSection() {
+      if (this.section == 1) {
+        this.playSong()
+      }
       this.section++
       setTimeout(() => {
         if (this.section == 2) {
@@ -62,14 +71,47 @@ export default {
           this.$refs.main.classList.replace("bg-pink", "bg-light-blue")
         } else if (this.section == 7) {
           this.$refs.main.classList.replace("bg-light-blue", "bg-orange")
+        } else if (this.section == 8) {
+          this.$refs.main.classList.replace("bg-orange", "bg-black")
         }
       }, 2000)
+    },
+    playSong() {
+      console.log("howl")
+      let love = new Howl({
+        src: [require('./assets/love.mp3')],
+        onend: () => {
+          truly.play()
+        }
+      })
+
+      let truly = new Howl({
+        src: [require('./assets/truly.mp3')],
+        onend: () => {
+          trueBlue.play()
+        }
+      })
+
+      let trueBlue = new Howl({
+        src: [require('./assets/true.mp3')],
+        onend: () => {
+          love.play()
+        }
+      })
+
+
+      love.play()
     }
   }
 }
 </script>
 
 <style lang="scss">
+
+button {
+  position:absolute;
+  z-index: 100;
+}
 
 body {
   margin: 0;
@@ -182,6 +224,12 @@ body {
   // animation-fill-mode: forwards;
 }
 
+.section-8-transition {
+  background-color: black;
+  animation: section-8-transition 2s;
+  // animation-fill-mode: forwards;
+}
+
 @keyframes section-2-transition {
   0% {
     height: 0;
@@ -219,6 +267,15 @@ body {
 }
 
 @keyframes section-6-transition {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100vh;
+  }
+}
+
+@keyframes section-8-transition {
   0% {
     height: 0;
   }
